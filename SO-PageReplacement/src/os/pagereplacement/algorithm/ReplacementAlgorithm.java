@@ -2,13 +2,11 @@ package os.pagereplacement.algorithm;
 
 import java.util.Arrays;
 
-/**
- * A implementação de todos os algoritmos possui uma base em comum: o acesso aos frames de memória e a solicitação de página que não gera
- * page fault. A implementação deste tipo de solicitação é simples: quando uma página já está em um frame, não há page fault, caso
- * contrário, se houver frame livre a página solicitada pode ser inserida sem a necessidade de eleger uma página para substituição.
- * 
- * @author Rafael Sales - rafaelcds@gmail.com
- */
+/**La implementación de todos los algoritmos tiene una base común: el acceso a los marcos de memoria y la solicitud de una página que no genera
+*Fallo de página. La implementación de este tipo de solicitud es simple: cuando una página ya está en un marco, no hay falla de página, en caso de de lo contrario, 
+*si hay un marco libre, la página solicitada se puede insertar sin necesidad de elegir una página para reemplazarla.
+
+*/
 public abstract class ReplacementAlgorithm {
 
 	public static final int EMPTY_FRAME_VALUE = -1;
@@ -42,12 +40,10 @@ public abstract class ReplacementAlgorithm {
 	public abstract int insert(int pageNumber);
 
 	/**
-	 * Se a página ainda não estiver em um frame, incrementa a quantidade de page 
-	 * faults e tenta inserir a página em um frame vazio, se houver
-	 * 
-	 * @param pageNumber
-	 * @return
-	 */
+	*Si la página aún no está en un marco, aumenta la cantidad de páginas
+	*fallas e intente insertar la página en un marco vacío, si lo hubiera
+	*/
+	
 	protected int tryBasicInsert(int pageNumber) {
 		int pageFrameIndex = getPageFrameIndex(pageNumber);
 		if (pageFrameIndex != -1) {
@@ -62,11 +58,10 @@ public abstract class ReplacementAlgorithm {
 		}
 	}
 
+	
 	/**
-	 * Obtém o índice de uma página no vetor de frames, caso esteja nele.
-	 * 
-	 * @param pageNumber
-	 * @return índice da página ou -1 caso a página não esteja no vetor de frames
+	*Obtiene el índice de una página en el vector de marco, si está allí.
+	*
 	 */
 	public int getPageFrameIndex(int pageNumber) {
 		for (int i = 0; i < frames.length; i++) {
@@ -77,11 +72,12 @@ public abstract class ReplacementAlgorithm {
 		return -1;
 	}
 
+	
 	/**
-	 * Procura um frame livre
-	 * 
-	 * @return índice de um frame livre ou -1 (caso não exista frame livre)
-	 */
+	* Busca un marco libre
+	*índice de retorno de un fotograma libre o -1 (si no hay un fotograma libre)
+	**/
+	
 	protected int findFreeFrameIndex() {
 		for (int i = 0; i < frames.length; i++) {
 			if (frames[i] == -1) {
@@ -90,13 +86,11 @@ public abstract class ReplacementAlgorithm {
 		}
 		return -1;
 	}
-
+	
 	/**
-	 * Insere a página em um frame livre, caso exista
-	 * 
-	 * @param pageNumber
-	 * @return índice do frame se a página foi inserida; -1 caso contrário
-	 */
+	*Inserta la página en un marco libre, si lo hubiera
+	*/
+
 	protected int tryInsertFreeFrame(int pageNumber) {
 		int freeFrameIndex = findFreeFrameIndex();
 		if (freeFrameIndex != -1) {
