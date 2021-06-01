@@ -1,9 +1,10 @@
 package os.pagereplacement;
 
+
 /**
- * This class generates page references ranging from 0 .. 9
- * 
- * Usage: PageGenerator gen = new PageGenerator() int[] ref = gen.getReferenceString();
+ * Esta clase genera referencias de pagina que van desde 0 a 9
+*Uso: PageGenerator gen = new PageGenerator () int [] ref = gen.getReferenceString ();
+ *
  */
 
 public class PageGenerator {
